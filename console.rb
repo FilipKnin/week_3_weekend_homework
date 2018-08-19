@@ -5,6 +5,8 @@ require_relative('models/screening')
 
 require('pry')
 
+Film.delete_all()
+
 film1 = Film.new({
   'title' => 'The Force Awakens'
   });
