@@ -44,5 +44,20 @@ screening2 = Screening.new({
 screening1.save()
 screening2.save()
 
+ticket1 =  Ticket.new({
+  'customer_id' => customer1.id,
+  'screening_id' => screening1.id,
+  'price' => "15"
+  })
+
+ticket2 =  Ticket.new({
+  'customer_id' => customer2.id,
+  'screening_id' => screening2.id,
+  'price' => "15"
+  })
+
+ticket1.save()
+ticket2.save()
+
 binding.pry
 nil

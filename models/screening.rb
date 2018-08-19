@@ -8,6 +8,7 @@ class Screening
     @capacity = options['capacity'].to_i
     @projection = options['projection']
     @tickets = []
+    @id = options['id'].to_i() if options['id']
   end
 
   def save()

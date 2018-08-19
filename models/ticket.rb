@@ -1,15 +1,25 @@
 class Ticket
 
-  attr_accessor(:customer_id, :film_id)
+  attr_accessor(:customer_id, :screening_id, :price)
   attr_reader(:id)
 
   def initialize(options)
+
     @customer_id = options['customer_id'].to_i()
-    @film_id = options['film_id'].to_i()
     @screening_id = options['screening_id'].to_i()
+    @price = options['price'].to_i()
     @id = options['id'].to_i() if options['id']
   end
 
-  
+  def save()
+    sql = "INSERT INTO tickets
+          (customer_id, screening_id, price)
+          VALUES
+          ($1, $2, $3)
+          RETURNING id"
+    values = [@customer_id, @screening_id, @price]
+    output = SqlRunner.run(sql, values).first #what i get know?/stepbystep
+    @id = output['id'].to_i()
+  end
 
 end
