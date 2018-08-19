@@ -33,4 +33,20 @@ class Screening
     return result.map { |screening| Screening.new(screening)  }
   end
 
+  def update()
+    sql = "UPDATE screenings
+          SET
+          (
+          film_id, capacity, projection
+          )
+          =
+          (
+          $1, $2, $3)
+          WHERE
+          id = $4"
+      values = [@film_id, @capacity, @projection, @id]
+      result = SqlRunner.run(sql, values)
+      return result.map { |screening| Screening.new(screening)  }
+  end
+
 end
