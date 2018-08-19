@@ -1,12 +1,24 @@
 class Screening
-  attr_accessor(:capacity, :customer_id, :film_id, :screening_time)
+  attr_accessor(:capacity, :tickets, :film_id, :projection)
   attr_reader(:id)
 
 
   def initialize(options)
-    @capacity = options['capacity']
+    @film_id = options['film_id'].to_i()
+    @capacity = options['capacity'].to_i
+    @projection = options['projection']
     @tickets = []
-    @screning_time = options['screning_time']
-    @film_id = options['film_id']  
   end
+
+  def save()
+    sql = "INSERT INTO screenings
+          (film_id, capacity, projection)
+          VALUES
+          ($1, $2, $3)
+          RETURNING id"
+    values = [@film_id, @capacity, @projection]
+    output = SqlRunner.run(sql, values).first #what i get know?/stepbystep
+    @id = output['id'].to_i()
+  end
+
 end

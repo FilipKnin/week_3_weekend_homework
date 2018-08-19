@@ -16,12 +16,20 @@ CREATE TABLE films(
   title VARCHAR(255)
   );
 
-CREATE TABLE screenings(
-  id SERIAL8 PRIMARY KEY,
-  capacity INT,
-  screning_time TIME,
-  film_id INT8 REFERENCES films(id) ON DELETE CASCADE
-  );
+
+  CREATE TABLE screenings(
+    id SERIAL8 PRIMARY KEY,
+    capacity INT,
+    projection TIME,
+    film_id INT8 REFERENCES films(id) ON DELETE CASCADE
+    );
+
+-- CREATE TABLE screenings(
+--   id SERIAL8 PRIMARY KEY,
+--   capacity INT,
+--   screning_time TIME,
+--   film_id INT8 REFERENCES films(id) ON DELETE CASCADE
+--   );
 
 CREATE TABLE tickets(
   id SERIAL8 PRIMARY KEY,

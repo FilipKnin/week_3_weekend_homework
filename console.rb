@@ -29,6 +29,20 @@ customer2 = Customer.new({
 customer1.save()
 customer2.save()
 
+screening1 = Screening.new({
+  'film_id' => film1.id,
+  'capacity' => '2',
+  'projection' => '15:30'
+  });
+
+screening2 = Screening.new({
+  'film_id' => film2.id,
+  'capacity' => '1',
+  'projection' => '18:30'
+  });
+
+screening1.save()
+screening2.save()
 
 binding.pry
 nil
