@@ -27,7 +27,6 @@ class Film
     sql = "SELECT * FROM films"
     result = SqlRunner.run(sql)
     return result.map { |film| Film.new(film)  }
-
   end
 
 end
