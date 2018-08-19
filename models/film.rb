@@ -29,4 +29,17 @@ class Film
     return result.map { |film| Film.new(film)  }
   end
 
+  def update()
+    sql = "UPDATE films
+          SET
+          title
+          =
+          $1
+          WHERE
+          id = $2"
+      values = [@title, @id]
+      result = SqlRunner.run(sql, values)
+      return result.map { |film| Film.new(film)  }
+  end
+
 end
