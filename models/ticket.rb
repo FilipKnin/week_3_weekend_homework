@@ -33,4 +33,20 @@ class Ticket
     return result.map { |ticket| Ticket.new(ticket)  }
   end
 
+  def update()
+    sql = "UPDATE tickets
+          SET
+          (
+          customer_id, screening_id, price
+          )
+          =
+          (
+          $1, $2, $3)
+          WHERE
+          id = $4"
+      values = [@customer_id, @screening_id, @price, @id]
+      result = SqlRunner.run(sql, values)
+      return result.map { |ticket| Ticket.new(ticket)  }
+  end
+
 end

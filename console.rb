@@ -8,6 +8,7 @@ require('pry')
 Film.delete_all()
 Customer.delete_all()
 Screening.delete_all()
+Ticket.delete_all()
 
 film1 = Film.new({
   'title' => 'The Force Awakens'
