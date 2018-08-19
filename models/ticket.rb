@@ -49,12 +49,20 @@ class Ticket
       return result.map { |ticket| Ticket.new(ticket)  }
   end
 
-  def customer
+  def customer()
     sql = "SELECT * FROM customers
           WHERE id = $1"
     values = [@customer_id]
     result = SqlRunner.run(sql, values)
     return result.map { |customer| Customer.new(customer)  }
+  end
+
+  def screening()
+    sql = "SELECT * FROM screenings
+          WHERE id = $1"
+    values = [@screening_id]
+    result = SqlRunner.run(sql, values)
+    return result.map { |screening| Screening.new(screening)  }
 
   end
 end
