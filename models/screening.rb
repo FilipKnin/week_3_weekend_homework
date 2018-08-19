@@ -22,4 +22,15 @@ class Screening
     @id = output['id'].to_i()
   end
 
+  def Screening.delete_all()
+    sql = "DELETE FROM screenings"
+    SqlRunner.run(sql)
+  end
+
+  def Screening.all()
+    sql = "SELECT * FROM screenings"
+    result = SqlRunner.run(sql)
+    return result.map { |screening| Screening.new(screening)  }
+  end
+
 end
