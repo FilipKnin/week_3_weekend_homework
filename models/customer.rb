@@ -28,4 +28,21 @@ class Customer
     return result.map { |customer| Customer.new(customer)  }
   end
 
+  def update()
+    sql = "UPDATE customers
+          SET
+          (
+          name, funds
+          )
+          =
+          (
+          $1, $2)
+          WHERE
+          id = $3"
+      values = [@name, @funds, @id]
+      result = SqlRunner.run(sql, values)
+      return result.map { |customer| Customer.new(customer)  }
+  end
+
+
 end
