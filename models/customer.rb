@@ -44,5 +44,19 @@ class Customer
       return result.map { |customer| Customer.new(customer)  }
   end
 
+  # def all_films()
+  #   sql = "SELECT films.*
+  #         FROM films
+  #         INNER JOIN screenings
+  #         ON screening.film_id = films.id
+  #         WHERE  "
+  #
+  # end
+
+  # "SELECT stars.*
+  #         FROM stars
+  #         INNER JOIN castings
+  #         ON castings.star_id = stars.id
+  #         WHERE castings.movie_id = $1"
 
 end
