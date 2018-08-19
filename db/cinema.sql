@@ -15,16 +15,18 @@ CREATE TABLE films(
   title VARCHAR(255)
   );
 
-CREATE TABLE tickets(
-  id SERIAL8 PRIMARY KEY,
-  customer_id INT8 REFERENCES customers(id) ON DELETE CASCADE,
-  film_id INT8 REFERENCES films(id) ON DELETE CASCADE
-  );
 
-  CREATE TABLE screenings(
+CREATE TABLE screenings(
   id SERIAL8 PRIMARY KEY,
   capacity INT,
   tickets VARCHAR(255),
-  screning_time TIME,
-  film_id INT8 REFERENCES film(id) ON DELETE CASCADE
-  )
+  screning_time TIME
+  );
+
+CREATE TABLE tickets(
+  id SERIAL8 PRIMARY KEY,
+  price INT,
+  customer_id INT8 REFERENCES customers(id) ON DELETE CASCADE,
+  film_id INT8 REFERENCES films(id) ON DELETE CASCADE,
+  screening_id INT8 REFERENCES screenings(id) ON DELETE CASCADE
+);

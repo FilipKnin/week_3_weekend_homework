@@ -16,7 +16,6 @@ class Film
     values = [@title]
     output = SqlRunner.run(sql, values).first #what i get know?/stepbystep
     @id = output['id'].to_i()
-
   end
 
 end

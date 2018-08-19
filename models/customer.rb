@@ -5,13 +5,13 @@ class Customer
 
   def initialize (options)
     @name = options['name']
-    @funds = options['funds']
+    @funds = options['funds'].to_i()
     @id = options['id'].to_i() if options['id']
   end
 
   def save()
-    sql = "INSERT INTO films
-          (title, name) VALUES ($1, $2) RETURNING id"
+    sql = "INSERT INTO customers
+          (name, funds) VALUES ($1, $2) RETURNING id"
     values = [@name, @funds]
     output = SqlRunner.run(sql, values).first #what i get know?/stepbystep
     @id = output['id'].to_i()
